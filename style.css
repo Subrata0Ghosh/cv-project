@@ -1,0 +1,120 @@
+*{
+    margin: 0;/*default margin ta soria 0 koredilam*/
+    padding: 0;
+}
+
+body{
+    background-color: #EEE;
+    /* use roboto text from  */
+    font-family: 'Roboto', sans-serif; 
+}
+/* main middle  page to show header,footer,content*/
+.container{
+    max-width: 1000px;
+    background-color: #e4f9f5;
+    margin: 0 auto;
+    padding: 20px;/*img er charipashe padding deber jonno   */
+}
+
+header{
+
+}
+
+/* customize profile img */
+.profile-img{
+    width: 100px;
+    height: 120px;
+    border: 3px solid white;
+    border-radius:50%; /*img ta circle er moddhe set korar jonno*/
+    float: left;/*Subrata Ghosh,Web Designer text ta img er right e show korar jonno*/
+
+}
+/*Subrata Ghosh,Web Designer text ta cstomize*/
+.header-bio{
+     float: left; /*Subrata Ghosh,Web Designer text & img er moddhe gap create korbe*/
+     padding: 30px; 
+}
+h1,h2,h3,h4,h5,h6{/*Subrata Ghosh,Web Designer text color change*/
+    color: #11999e;
+}
+.header-contact{
+    float: right;/* email ta contaner er top-right-corner e show*/
+    padding: 30px;
+}
+.header-contact a{/*email,website text castomize */
+   text-decoration: none;
+   color: teal;
+   /* font-weight: bold; */
+}
+.header-contact a:hover{/*email,website text hover korle */
+    /* text-decoration: underline; */
+    color: tomato;
+}
+/* clear <div> from header to show hoirigental rule after header */
+.div-clear{
+    clear:both; 
+}
+/* horizental rule */
+hr{
+    border: solid black 3px;
+    width: 100%; /* container e joto jaiga ache sob nebe */
+    margin: 20px auto; /*rule ta center e show korar jonno "auto" */
+    border-bottom: none;/* double rule er poriborte single rule show*/
+}
+
+/*---------------------
+ personal section start 
+ --------------------*/
+ #personal-section{
+
+ }
+.content{
+    margin-bottom: 30px;
+}
+.left-div{
+    width: 30%;
+    float: left;
+}
+.right-div{
+    width: 70%;
+    float: left;
+}
+/* create comman horizontal rule */
+.common-hr{
+    border: solid black 1px;
+    border-bottom:none;
+    width: 100%;
+    margin: 20 auto;
+}
+
+/*---------------------
+ education section start 
+ --------------------*/
+ .edu-template-left{
+     float:left;
+     width: 45%;
+
+ }
+ .edu-template-right{
+    float:right;
+    width: 45%;
+    
+}
+ /*---------------------
+ footer section start 
+ --------------------*/
+ .bottom-container{
+     background-color: black;
+     text-align: center;
+     padding: 10px; 
+ }
+ .bottom-container a{
+     color: white;
+      text-decoration: none; /*do not show any under line*/
+      margin: 20px;
+ } 
+ /* to show para graph->copywright text */
+ .bottom-container p{
+    color: white;
+    margin-top: 20px;
+} 
