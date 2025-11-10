@@ -4,51 +4,114 @@
 }
 
 body{
-    background-color: #EEE;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     /* use roboto text from  */
     font-family: 'Roboto', sans-serif; 
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    line-height: 1.6;
+    color: #333;
+}
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%);
+    z-index: -1;
 }
 /* main middle  page to show header,footer,content*/
 .container{
-    max-width: 1000px;
-    background-color: #e4f9f5;
-    margin: 0 auto;
-    padding: 20px;/*img er charipashe padding deber jonno   */
+    /* width: 80%; */
+    max-width: 1200px;
+    background-color: #ffffff;
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 header{
-
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 0 20px rgba(240, 147, 251, 0.5);
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+}
+header::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    border-radius: 17px;
+    z-index: -1;
+    opacity: 0.8;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+@keyframes glow {
+    from {
+        box-shadow: 0 0 20px rgba(240, 147, 251, 0.5);
+    }
+    to {
+        box-shadow: 0 0 30px rgba(240, 147, 251, 0.8), 0 0 40px rgba(245, 87, 108, 0.6);
+    }
 }
 
 /* customize profile img */
 .profile-img{
     width: 100px;
     height: 120px;
-    border: 3px solid white;
+    border: 5px solid white;
     border-radius:50%; /*img ta circle er moddhe set korar jonno*/
-    float: left;/*Subrata Ghosh,Web Designer text ta img er right e show korar jonno*/
-
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    flex-shrink: 0;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.profile-img:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
 }
 /*Subrata Ghosh,Web Designer text ta cstomize*/
 .header-bio{
-     float: left; /*Subrata Ghosh,Web Designer text & img er moddhe gap create korbe*/
-     padding: 30px; 
+    flex: 1;
+    padding: 0 20px;
+    color: #333;
+}
+.tagline {
+    font-style: italic;
+    color: #555;
+    font-size: 1.1em;
+    margin: 5px 0;
+    font-weight: 300;
 }
 h1,h2,h3,h4,h5,h6{/*Subrata Ghosh,Web Designer text color change*/
-    color: #11999e;
+    color: #333;
+    margin: 5px 0;
 }
 .header-contact{
-    float: right;/* email ta contaner er top-right-corner e show*/
-    padding: 30px;
+    padding: 10px 0 10px 10px;
+    text-align: right;
+    flex-shrink: 0;
 }
 .header-contact a{/*email,website text castomize */
    text-decoration: none;
-   color: teal;
-   /* font-weight: bold; */
+   color: #333;
+   font-weight: bold;
 }
 .header-contact a:hover{/*email,website text hover korle */
-    /* text-decoration: underline; */
-    color: tomato;
+    color: #ffd700;
 }
 /* clear <div> from header to show hoirigental rule after header */
 .div-clear{
@@ -56,28 +119,67 @@ h1,h2,h3,h4,h5,h6{/*Subrata Ghosh,Web Designer text color change*/
 }
 /* horizental rule */
 hr{
-    border: solid black 3px;
-    width: 100%; /* container e joto jaiga ache sob nebe */
-    margin: 20px auto; /*rule ta center e show korar jonno "auto" */
-    border-bottom: none;/* double rule er poriborte single rule show*/
+    border: none;
+    height: 3px;
+    background: linear-gradient(90deg, #f093fb, #f5576c);
+    width: 100%;
+    margin: 30px auto;
 }
 
 /*---------------------
  personal section start 
  --------------------*/
- #personal-section{
-
- }
 .content{
     margin-bottom: 30px;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeInUp 0.6s ease-out, floating 6s ease-in-out infinite;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 .left-div{
     width: 30%;
     float: left;
+    font-weight: bold;
+    color: #333;
 }
 .right-div{
-    width: 70%;
-    float: left;
+    flex: 1;
+    color: #555;
+}
+.content a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+.content a:hover {
+    text-decoration: none;
 }
 /* create comman horizontal rule */
 .common-hr{
@@ -104,17 +206,209 @@ hr{
  footer section start 
  --------------------*/
  .bottom-container{
-     background-color: black;
+     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
      text-align: center;
-     padding: 10px; 
+     padding: 20px; 
+     border-radius: 15px;
+     margin-top: 30px;
  }
  .bottom-container a{
      color: white;
       text-decoration: none; /*do not show any under line*/
-      margin: 20px;
+      margin: 10px 20px;
+      font-weight: bold;
+      transition: color 0.3s;
  } 
+ .bottom-container .print-btn {
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 10px;
+    transition: background 0.3s;
+ }
+ .bottom-container .print-btn:hover {
+    background: linear-gradient(90deg, #5a67d8, #6b46c1);
+ }
+ .bottom-container a:hover{
+    color: #ffd700;
+ }
  /* to show para graph->copywright text */
  .bottom-container p{
     color: white;
     margin-top: 20px;
+    font-size: 14px;
 } 
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .container {
+        /* width: 95%; */
+        padding: 25px;
+    }
+    .profile-img {
+        width: 80px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        background: #f0f0f0;
+    }
+    body::before {
+        display: none;
+    }
+    .container {
+        padding: 20px;
+        margin: 0;
+        /* width: 100%; */
+        border-radius: 0;
+    }
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+    .profile-img {
+        width: 70px;
+        height: 80px;
+        margin-bottom: 10px;
+    }
+    .header-bio {
+        padding: 10px 0;
+    }
+    .header-bio h1 {
+        font-size: 1.5em;
+    }
+    .header-bio h3 {
+        font-size: 1.2em;
+    }
+    .header-contact {
+        padding: 10px 0;
+        text-align: center;
+    }
+    .content {
+        padding: 15px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .left-div, .right-div {
+        width: 100%;
+    }
+    .edu-template-left, .edu-template-right {
+        width: 100%;
+        float: none;
+    }
+    .content {
+        padding: 15px;
+    }
+    .bottom-container a {
+        display: block;
+        margin: 10px 0;
+        font-size: 14px;
+    }
+    .bottom-container .print-btn {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+    }
+    .right-div li {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+    header {
+        padding: 10px;
+    }
+    .profile-img {
+        width: 60px;
+        height: 70px;
+    }
+    .header-bio h1 {
+        font-size: 1.3em;
+    }
+    .header-bio h3 {
+        font-size: 1.1em;
+    }
+    .content {
+        padding: 10px;
+    }
+    hr {
+        margin: 20px auto;
+    }
+}
+
+/* Skills styling */
+.right-div ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.right-div li {
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    color: white;
+    padding: 8px 15px;
+    margin: 0;
+    border-radius: 20px;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.right-div li:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white !important;
+        color: black !important;
+        font-size: 12px;
+    }
+    .container {
+        box-shadow: none !important;
+        margin: 0 !important;
+        padding: 10px !important;
+    }
+    header {
+        background: white !important;
+        color: black !important;
+        padding: 10px !important;
+        border-bottom: 2px solid black !important;
+    }
+    .profile-img {
+        width: 80px !important;
+        height: 80px !important;
+    }
+    .content {
+        page-break-inside: avoid;
+        background: white !important;
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+    }
+    hr, .common-hr {
+        border-color: black !important;
+    }
+    .bottom-container {
+        background: white !important;
+        color: black !important;
+        border-top: 1px solid black !important;
+    }
+    a {
+        color: black !important;
+        text-decoration: none !important;
+    }
+}
