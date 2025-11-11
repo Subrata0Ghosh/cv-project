@@ -4,14 +4,14 @@
 }
 
 body{
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #000000;
     /* use roboto text from  */
     font-family: 'Roboto', sans-serif; 
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
     line-height: 1.6;
-    color: #333;
+    color: #ffffff;
 }
 body::before {
     content: '';
@@ -20,26 +20,26 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%);
+    background: radial-gradient(circle at 20% 80%, rgba(0, 255, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.1) 0%, transparent 50%);
     z-index: -1;
 }
 /* main middle  page to show header,footer,content*/
 .container{
     /* width: 80%; */
     max-width: 1200px;
-    background-color: #ffffff;
+    background-color: #111111;
     margin: 20px auto;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.3), 0 0 60px rgba(255, 0, 255, 0.2);
 }
 
 header{
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    background: linear-gradient(135deg, #00ff00 0%, #ff00ff 100%);
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 0 20px rgba(240, 147, 251, 0.5);
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.5), 0 0 60px rgba(255, 0, 255, 0.3);
     margin-bottom: 30px;
     display: flex;
     justify-content: space-between;
@@ -54,7 +54,7 @@ header::before {
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: linear-gradient(135deg, #f093fb, #f5576c);
+    background: linear-gradient(135deg, #00ff00, #ff00ff);
     border-radius: 17px;
     z-index: -1;
     opacity: 0.8;
@@ -62,10 +62,10 @@ header::before {
 }
 @keyframes glow {
     from {
-        box-shadow: 0 0 20px rgba(240, 147, 251, 0.5);
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
     }
     to {
-        box-shadow: 0 0 30px rgba(240, 147, 251, 0.8), 0 0 40px rgba(245, 87, 108, 0.6);
+        box-shadow: 0 0 30px rgba(0, 255, 0, 0.8), 0 0 40px rgba(255, 0, 255, 0.6);
     }
 }
 
@@ -73,15 +73,24 @@ header::before {
 .profile-img{
     width: 100px;
     height: 120px;
-    border: 5px solid white;
+    border: 5px solid #00ff00;
     border-radius:50%; /*img ta circle er moddhe set korar jonno*/
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3), 0 0 20px rgba(0, 255, 0, 0.5);
     flex-shrink: 0;
     transition: transform 0.3s, box-shadow 0.3s;
+    animation: imgGlow 3s ease-in-out infinite alternate;
 }
 .profile-img:hover {
     transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5), 0 0 30px rgba(0, 255, 0, 0.8);
+}
+@keyframes imgGlow {
+    from {
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3), 0 0 20px rgba(0, 255, 0, 0.5);
+    }
+    to {
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3), 0 0 30px rgba(0, 255, 0, 0.8);
+    }
 }
 /*Subrata Ghosh,Web Designer text ta cstomize*/
 .header-bio{
@@ -91,14 +100,18 @@ header::before {
 }
 .tagline {
     font-style: italic;
-    color: #555;
+    color: #00ff00;
     font-size: 1.1em;
     margin: 5px 0;
     font-weight: 300;
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
 }
-h1,h2,h3,h4,h5,h6{/*Subrata Ghosh,Web Designer text color change*/
-    color: #333;
+h1,h2,h3,h4,h5,h6{
+    color: #ffffff;
     margin: 5px 0;
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+    letter-spacing: 1px;
+    font-weight: bold;
 }
 .header-contact{
     padding: 10px 0 10px 10px;
@@ -107,11 +120,11 @@ h1,h2,h3,h4,h5,h6{/*Subrata Ghosh,Web Designer text color change*/
 }
 .header-contact a{/*email,website text castomize */
    text-decoration: none;
-   color: #333;
+   color: #00ff00;
    font-weight: bold;
 }
 .header-contact a:hover{/*email,website text hover korle */
-    color: #ffd700;
+    color: #ff00ff;
 }
 /* clear <div> from header to show hoirigental rule after header */
 .div-clear{
@@ -121,7 +134,7 @@ h1,h2,h3,h4,h5,h6{/*Subrata Ghosh,Web Designer text color change*/
 hr{
     border: none;
     height: 3px;
-    background: linear-gradient(90deg, #f093fb, #f5576c);
+    background: linear-gradient(90deg, #00ff00, #ff00ff);
     width: 100%;
     margin: 30px auto;
 }
@@ -131,10 +144,10 @@ hr{
  --------------------*/
 .content{
     margin-bottom: 30px;
-    background: #f9f9f9;
+    background: #222222;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s;
     animation: fadeInUp 0.6s ease-out, floating 6s ease-in-out infinite;
     display: flex;
@@ -161,29 +174,31 @@ hr{
 }
 .content:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 25px rgba(0, 255, 0, 0.4);
 }
 .left-div{
     width: 30%;
     float: left;
     font-weight: bold;
-    color: #333;
+    color: #00ff00;
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
 }
 .right-div{
     flex: 1;
-    color: #555;
+    color: #cccccc;
 }
 .content a {
     text-decoration: none;
-    color: #007bff;
+    color: #00ff00;
     font-weight: bold;
 }
 .content a:hover {
     text-decoration: none;
+    color: #ff00ff;
 }
 /* create comman horizontal rule */
 .common-hr{
-    border: solid black 1px;
+    border: solid #00ff00 1px;
     border-bottom:none;
     width: 100%;
     margin: 20 auto;
@@ -206,33 +221,82 @@ hr{
  footer section start 
  --------------------*/
  .bottom-container{
-     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+     background: linear-gradient(135deg, #000000 0%, #111111 100%);
      text-align: center;
      padding: 20px; 
      border-radius: 15px;
      margin-top: 30px;
+     box-shadow: 0 0 30px rgba(0, 255, 0, 0.3), 0 0 60px rgba(255, 0, 255, 0.2);
  }
  .bottom-container a{
-     color: white;
+     color: #00ff00;
       text-decoration: none; /*do not show any under line*/
       margin: 10px 20px;
       font-weight: bold;
       transition: color 0.3s;
  } 
  .bottom-container .print-btn {
-    background: linear-gradient(90deg, #667eea, #764ba2);
-    color: white;
+    background: linear-gradient(90deg, #00ff00, #ff00ff);
+    color: #000000;
     border: none;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 25px;
     cursor: pointer;
     font-size: 14px;
     margin: 10px;
-    transition: background 0.3s;
- }
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 255, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+    animation: heartbeat 2.5s infinite;
+}
  .bottom-container .print-btn:hover {
-    background: linear-gradient(90deg, #5a67d8, #6b46c1);
- }
+    background: linear-gradient(90deg, #00ff00, #ff00ff);
+    box-shadow: 0 6px 20px rgba(0, 255, 0, 0.6), 0 0 20px rgba(255, 0, 255, 0.8);
+    transform: translateY(-2px);
+}
+ /* Download button styling */
+ .download-btn {
+    background: linear-gradient(90deg, #00ff00, #ff00ff);
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 10px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 255, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+    animation: heartbeat 2.5s infinite;
+}
+.download-btn:hover {
+    background: linear-gradient(90deg, #00ff00, #ff00ff);
+    box-shadow: 0 6px 20px rgba(0, 255, 0, 0.6), 0 0 20px rgba(255, 0, 255, 0.8);
+    transform: translateY(-2px);
+}
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+    25% {
+        transform: scale(1.03);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+    50% {
+        transform: scale(1.06);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.8);
+    }
+    75% {
+        transform: scale(1.03);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+}
  .bottom-container a:hover{
     color: #ffd700;
  }
@@ -356,8 +420,8 @@ hr{
     gap: 10px;
 }
 .right-div li {
-    background: linear-gradient(90deg, #667eea, #764ba2);
-    color: white;
+    background: linear-gradient(90deg, #00ff00, #ff00ff);
+    color: #000000;
     padding: 8px 15px;
     margin: 0;
     border-radius: 20px;
@@ -368,7 +432,7 @@ hr{
 }
 .right-div li:hover {
     transform: scale(1.05);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 10px rgba(0, 255, 0, 0.5);
 }
 
 /* Print Styles */
@@ -411,4 +475,231 @@ hr{
         color: black !important;
         text-decoration: none !important;
     }
+}
+
+/* Theme Styles */
+
+/* Light Theme */
+body.theme-light {
+    background: #ffffff;
+    color: #333333;
+}
+body.theme-light::before {
+    background: radial-gradient(circle at 20% 80%, rgba(100, 200, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 200, 100, 0.1) 0%, transparent 50%);
+}
+body.theme-light .container {
+    background-color: #f9f9f9;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+body.theme-light header {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+body.theme-light header::before {
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+}
+@keyframes glow {
+    from {
+        box-shadow: 0 0 20px rgba(252, 182, 159, 0.5);
+    }
+    to {
+        box-shadow: 0 0 30px rgba(252, 182, 159, 0.8), 0 0 40px rgba(255, 236, 210, 0.6);
+    }
+}
+body.theme-light h1, body.theme-light h2, body.theme-light h3, body.theme-light h4, body.theme-light h5, body.theme-light h6 {
+    color: #333333;
+    text-shadow: none;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+body.theme-light .tagline {
+    color: #555555;
+    text-shadow: none;
+}
+body.theme-light .header-contact a {
+    color: #007bff;
+}
+body.theme-light .content {
+    background: #ffffff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+body.theme-light .left-div {
+    color: #333333;
+    text-shadow: none;
+}
+body.theme-light .right-div {
+    color: #555555;
+}
+body.theme-light .content a {
+    color: #007bff;
+}
+body.theme-light .bottom-container {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+}
+body.theme-light .bottom-container a {
+    color: #333333;
+}
+body.theme-light .bottom-container p {
+    color: #333333;
+}
+body.theme-light .download-btn, body.theme-light .print-btn {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+    animation: heartbeat 2s infinite;
+}
+body.theme-light .download-btn:hover, body.theme-light .print-btn:hover {
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.6);
+}
+body.theme-light .right-div li {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: white;
+}
+
+/* Blue Neon Theme */
+body.theme-blue-neon {
+    background: #000000;
+    color: #ffffff;
+}
+body.theme-blue-neon::before {
+    background: radial-gradient(circle at 20% 80%, rgba(0, 150, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 150, 0.1) 0%, transparent 50%);
+}
+body.theme-blue-neon .container {
+    background-color: #111111;
+    box-shadow: 0 0 30px rgba(0, 150, 255, 0.3), 0 0 60px rgba(255, 0, 150, 0.2);
+}
+body.theme-blue-neon header {
+    background: linear-gradient(135deg, #00aaff 0%, #ff00aa 100%);
+    box-shadow: 0 0 30px rgba(0, 170, 255, 0.5), 0 0 60px rgba(255, 0, 170, 0.3);
+}
+body.theme-blue-neon header::before {
+    background: linear-gradient(135deg, #00aaff, #ff00aa);
+}
+@keyframes glow {
+    from {
+        box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
+    }
+    to {
+        box-shadow: 0 0 30px rgba(0, 170, 255, 0.8), 0 0 40px rgba(255, 0, 170, 0.6);
+    }
+}
+body.theme-blue-neon h1, body.theme-blue-neon h2, body.theme-blue-neon h3, body.theme-blue-neon h4, body.theme-blue-neon h5, body.theme-blue-neon h6 {
+    text-shadow: 0 0 10px #00aaff, 0 0 20px #00aaff, 0 0 30px #00aaff;
+}
+body.theme-blue-neon .tagline {
+    color: #00aaff;
+    text-shadow: 0 0 5px #00aaff, 0 0 10px #00aaff;
+}
+body.theme-blue-neon .header-contact a {
+    color: #00aaff;
+}
+body.theme-blue-neon .content {
+    box-shadow: 0 5px 15px rgba(0, 150, 255, 0.2);
+}
+body.theme-blue-neon .left-div {
+    color: #00aaff;
+    text-shadow: 0 0 5px #00aaff, 0 0 10px #00aaff;
+}
+body.theme-blue-neon .content a {
+    color: #00aaff;
+}
+body.theme-blue-neon .bottom-container {
+    background: linear-gradient(135deg, #000000 0%, #111111 100%);
+    box-shadow: 0 0 30px rgba(0, 150, 255, 0.3), 0 0 60px rgba(255, 0, 150, 0.2);
+}
+body.theme-blue-neon .bottom-container a {
+    color: #00aaff;
+}
+body.theme-blue-neon .download-btn, body.theme-blue-neon .print-btn {
+    background: linear-gradient(90deg, #00aaff, #ff00aa);
+    color: #000000;
+    box-shadow: 0 4px 15px rgba(0, 170, 255, 0.4);
+}
+body.theme-blue-neon .download-btn:hover, body.theme-blue-neon .print-btn:hover {
+    box-shadow: 0 6px 20px rgba(0, 170, 255, 0.6), 0 0 20px rgba(255, 0, 170, 0.8);
+}
+body.theme-blue-neon .right-div li {
+    background: linear-gradient(90deg, #00aaff, #ff00aa);
+    color: #000000;
+}
+
+/* Theme Selector Styling */
+#theme-select {
+    background: linear-gradient(90deg, #00ff00, #ff00ff);
+    color: #000000;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 255, 0, 0.4);
+    transition: all 0.3s ease;
+    outline: none;
+}
+#theme-select:hover {
+    box-shadow: 0 6px 20px rgba(0, 255, 0, 0.6), 0 0 20px rgba(255, 0, 255, 0.8);
+    transform: translateY(-2px);
+}
+#theme-select:focus {
+    box-shadow: 0 6px 20px rgba(0, 255, 0, 0.6), 0 0 20px rgba(255, 0, 255, 0.8);
+}
+
+/* Theme-specific overrides for selector */
+body.theme-light #theme-select {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: white;
+}
+body.theme-blue-neon #theme-select {
+    background: linear-gradient(90deg, #00aaff, #ff00aa);
+    color: #000000;
+}
+
+/* Theme Button Styling */
+.theme-btn {
+    background: linear-gradient(90deg, #00ff00, #ff00ff);
+    color: #000000;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0, 255, 0, 0.4);
+    transition: all 0.3s ease;
+    outline: none;
+}
+.theme-btn:hover {
+    box-shadow: 0 4px 15px rgba(0, 255, 0, 0.6), 0 0 15px rgba(255, 0, 255, 0.8);
+    transform: scale(1.1);
+}
+.theme-btn.active {
+    box-shadow: 0 4px 20px rgba(0, 255, 0, 0.8), 0 0 25px rgba(255, 0, 255, 1);
+    transform: scale(1.1);
+    border: 2px solid #ffffff;
+}
+
+/* Theme-specific button colors */
+body.theme-light .theme-btn {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: white;
+}
+body.theme-light .theme-btn.active {
+    border: 2px solid #000000;
+    box-shadow: 0 4px 20px rgba(0, 123, 255, 0.8);
+}
+body.theme-blue-neon .theme-btn {
+    background: linear-gradient(90deg, #00aaff, #ff00aa);
+    color: #000000;
+}
+body.theme-blue-neon .theme-btn:hover {
+    box-shadow: 0 4px 15px rgba(0, 170, 255, 0.6), 0 0 15px rgba(255, 0, 170, 0.8);
+}
+body.theme-blue-neon .theme-btn.active {
+    box-shadow: 0 4px 20px rgba(0, 170, 255, 0.8), 0 0 25px rgba(255, 0, 170, 1);
 }

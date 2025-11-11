@@ -14,6 +14,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 </head>
 
 <body>
@@ -32,6 +35,12 @@
                 <p><a href="mailto:subrataghosh6799@gmail.com">Email: subrataghosh6799@gmail.com</a></p>
                 <p><a href="https://technorchid.blogspot.com">website:TechnOrchid</a></p>
                 <p><a href="tel:+919073209390">Phone-no:+91 9073209390</a></p>
+                <p><button class="download-btn" title="Download Resume (PDF)" onclick="downloadResume()"><i class="fas fa-download"></i> Download</button></p>
+                <p>Theme: 
+                    <button class="theme-btn active" data-theme="dark-neon" title="Dark Neon Theme"><i class="fas fa-moon"></i></button>
+                    <button class="theme-btn" data-theme="light" title="Light Theme"><i class="fas fa-sun"></i></button>
+                    <button class="theme-btn" data-theme="blue-neon" title="Blue Neon Theme"><i class="fas fa-circle"></i></button>
+                </p>
             </div>
         </header>
         <!-- header end -->
@@ -96,23 +105,23 @@
                 </div>
 
                 <div class="right-div">
-                    <h4>Chativio</h4>
+                    <h4>Chativio <a href="https://github.com/Subrata0Ghosh/chativio" target="_blank" rel="noopener" title="View Chativio on GitHub"><i class="fas fa-external-link-alt"></i></a></h4>
                        <h5>Aug 2025</h5> 
-                      <p>An offline/online AI friend built with Flutter. Chat naturally, auto-detect events and reminders, and read short motivational stories — all while keeping your data private and local by default. Demo & details : <a href="https://chativio.blogspot.com/">Chativio</a></p>
+                      <p>An offline/online AI friend built with Flutter. Chat naturally, auto-detect events and reminders, and read short motivational stories — all while keeping your data private and local by default. Demo & details : <a href="https://chativio.blogspot.com/" target="_blank" rel="noopener">Chativio</a></p>
                     <br>    
-                    <h4>AI Website Builder</h4>
+                    <h4>AI Website Builder <a href="https://github.com/Subrata0Ghosh/ai-website-builder" target="_blank" rel="noopener" title="View AI Website Builder on GitHub"><i class="fas fa-external-link-alt"></i></a></h4>
                         <h5>Sept 2025 - Nov 2025</h5> 
                        <p>AI Website Builder is a full-stack project built using FastAPI and OpenAI API, allowing users to generate complete multi-page websites (HTML, CSS, JS) automatically from text descriptions. It also includes user authentication (signup/login), task management, and automatic project zipping and previewing.</p>
                     <br>
-                    <h4>Charging Alert App</h4>
+                    <h4>Charging Alert App <a href="https://github.com/Subrata0Ghosh/charge_alert" target="_blank" rel="noopener" title="View Charging Alert App on GitHub"><i class="fas fa-external-link-alt"></i></a></h4>
                         <h5>Oct 2025 - Nov 2025</h5> 
                        <p>Charge Alert is a lightweight Flutter app that monitors your device’s battery level and sends alerts when it reaches a specified percentage. It features a simple UI, low memory use, and no unnecessary background processes — perfect for keeping your device’s battery healthy.</p>
                     <br>
-                    <h4>Resume Analyzer and Organizer</h4>
+                    <h4>Resume Analyzer and Organizer <a href="https://github.com/Subrata0Ghosh/cv-to-csv-file-converter" target="_blank" rel="noopener" title="View Resume Analyzer on GitHub"><i class="fas fa-external-link-alt"></i></a></h4>
                         <h5>Jun 2024 - Feb 2024</h5> 
                        <p>The Resume Analyzer and Organizer is a web-based tool that handles resumes in PDF and DOCX formats. It extracts essential details, evaluates the resumes based on specific criteria, and organizes the gathered information into an Excel file.</p>
                     <br>
-                    <h4>Virtual Try-On (Final Year Project)</h4>
+                    <h4>Virtual Try-On (Final Year Project) <a href="https://github.com/Subrata0Ghosh/vertual-try-on" target="_blank" rel="noopener" title="View Virtual Try-On on GitHub"><i class="fas fa-external-link-alt"></i></a></h4>
                         <h5>Sep 2022 - Oct 2022</h5> 
                        <p>Customers can virtually try on shirts, sweaters, coats, and pants.</p>
                 </div>
@@ -196,7 +205,42 @@
     <!-- container end -->
 
     <script>
-        document.querySelector('.bottom-container p').innerHTML = 'Copyright &copy; Subrata Ghosh ' + new Date().getFullYear();
+        function downloadResume() {
+            const link = document.createElement('a');
+            link.href = 'Subrata Ghosh - Resume.pdf';
+            link.download = 'Subrata Ghosh - Resume.pdf';
+            link.click();
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeButtons = document.querySelectorAll('.theme-btn');
+            const body = document.body;
+
+            // Load saved theme or default to dark-neon
+            const savedTheme = localStorage.getItem('theme') || 'dark-neon';
+            body.className = 'theme-' + savedTheme;
+
+            // Remove active class from all buttons first
+            themeButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to the saved theme button
+            document.querySelector(`[data-theme="${savedTheme}"]`).classList.add('active');
+
+            themeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const selectedTheme = this.getAttribute('data-theme');
+                    
+                    // Remove active class from all buttons
+                    themeButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Apply theme
+                    body.className = 'theme-' + selectedTheme;
+                    localStorage.setItem('theme', selectedTheme);
+                });
+            });
+        });
     </script>
 
 </body>
