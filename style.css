@@ -1,6 +1,10 @@
 *{
     margin: 0;/*default margin ta soria 0 koredilam*/
     padding: 0;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
 }
 
 body{
@@ -183,9 +187,100 @@ hr{
     color: #00ff00;
     text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
 }
-.right-div{
+.right-div {
     flex: 1;
     color: #cccccc;
+    position: relative;
+}
+
+/* Unlock overlay styles */
+.unlock-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    border-radius: 15px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.unlock-box {
+    background: linear-gradient(135deg, #00ff00 0%, #ff00ff 100%);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5), 0 0 40px rgba(255, 0, 255, 0.3);
+    text-align: center;
+    color: #000000;
+    font-weight: bold;
+    max-width: 400px;
+    width: 90%;
+}
+
+.lock-icon {
+    font-size: 3em;
+    color: #00ff00;
+    margin-bottom: 10px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.unlock-box input {
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    width: 200px;
+    font-size: 16px;
+}
+
+.unlock-box button {
+    background: #000000;
+    color: #00ff00;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.unlock-box button:hover {
+    background: #333333;
+}
+
+.unlock-box p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+/* Dummy and real content styles */
+.dummy-content {
+    filter: blur(5px);
+}
+
+.real-content {
+    display: none;
+}
+
+/* Protected container */
+.protected-container {
+    position: relative;
 }
 .content a {
     text-decoration: none;
@@ -235,29 +330,9 @@ hr{
       font-weight: bold;
       transition: color 0.3s;
  } 
- .bottom-container .print-btn {
-    background: linear-gradient(90deg, #00ff00, #ff00ff);
-    color: #000000;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 14px;
-    margin: 10px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 255, 0, 0.4);
-    position: relative;
-    overflow: hidden;
-    animation: heartbeat 2.5s infinite;
-}
- .bottom-container .print-btn:hover {
-    background: linear-gradient(90deg, #00ff00, #ff00ff);
-    box-shadow: 0 6px 20px rgba(0, 255, 0, 0.6), 0 0 20px rgba(255, 0, 255, 0.8);
-    transform: translateY(-2px);
-}
  /* Download button styling */
  .download-btn {
-    background: linear-gradient(90deg, #00ff00, #ff00ff);
+    background: linear-gradient(90deg, #00aaff, #ff00aa);
     color: #000000;
     border: none;
     padding: 10px 20px;
@@ -269,14 +344,34 @@ hr{
     text-decoration: none;
     display: inline-block;
     font-weight: bold;
-    box-shadow: 0 4px 15px rgba(0, 255, 0, 0.4);
+    box-shadow: 0 4px 15px rgba(0, 170, 255, 0.4);
     position: relative;
     overflow: hidden;
     animation: heartbeat 2.5s infinite;
 }
 .download-btn:hover {
-    background: linear-gradient(90deg, #00ff00, #ff00ff);
-    box-shadow: 0 6px 20px rgba(0, 255, 0, 0.6), 0 0 20px rgba(255, 0, 255, 0.8);
+    background: linear-gradient(90deg, #00aaff, #ff00aa);
+    box-shadow: 0 6px 20px rgba(0, 170, 255, 0.6), 0 0 20px rgba(255, 0, 170, 0.8);
+    transform: translateY(-2px);
+}
+ .bottom-container .print-btn {
+    background: linear-gradient(90deg, #00aaff, #ff00aa);
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 170, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+    animation: heartbeat 2.5s infinite;
+}
+ .bottom-container .print-btn:hover {
+    background: linear-gradient(90deg, #00aaff, #ff00aa);
+    box-shadow: 0 6px 20px rgba(0, 170, 255, 0.6), 0 0 20px rgba(255, 0, 170, 0.8);
     transform: translateY(-2px);
 }
 @keyframes heartbeat {
@@ -435,6 +530,76 @@ hr{
     box-shadow: 0 5px 10px rgba(0, 255, 0, 0.5);
 }
 
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #00ff00 0%, #ff00ff 100%);
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    color: #000;
+    text-align: center;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+}
+
+.modal-content input, .modal-content textarea {
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.modal-content textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #000;
+}
+
+.modal-content button {
+    background: #000;
+    color: #00ff00;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.modal-content button:hover {
+    background: #333;
+}
+
 /* Print Styles */
 @media print {
     body {
@@ -531,30 +696,42 @@ body.theme-light .left-div {
 body.theme-light .right-div {
     color: #555555;
 }
-body.theme-light .content a {
+
+body.theme-light .unlock-box {
+    background: linear-gradient(135deg, #fcb69f 0%, #ffecd2 100%);
+    color: #333333;
+}
+
+body.theme-light .lock-icon {
     color: #007bff;
 }
-body.theme-light .bottom-container {
-    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+
+body.theme-light .unlock-box button {
+    background: #007bff;
+    color: white;
 }
-body.theme-light .bottom-container a {
+
+body.theme-light .unlock-box button:hover {
+    background: #0056b3;
+}
+
+body.theme-light .modal-content {
+    background: linear-gradient(135deg, #fcb69f 0%, #ffecd2 100%);
     color: #333333;
 }
-body.theme-light .bottom-container p {
-    color: #333333;
-}
-body.theme-light .download-btn, body.theme-light .print-btn {
-    background: linear-gradient(90deg, #007bff, #0056b3);
+
+body.theme-light .modal-content button {
+    background: #007bff;
     color: white;
-    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
-    animation: heartbeat 2s infinite;
 }
-body.theme-light .download-btn:hover, body.theme-light .print-btn:hover {
-    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.6);
+
+body.theme-light .modal-content button:hover {
+    background: #0056b3;
 }
-body.theme-light .right-div li {
-    background: linear-gradient(90deg, #007bff, #0056b3);
-    color: white;
+
+body.theme-light .modal-content input:focus, body.theme-light .modal-content textarea:focus {
+    outline: 2px solid #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 /* Blue Neon Theme */
@@ -612,17 +789,77 @@ body.theme-blue-neon .bottom-container {
 body.theme-blue-neon .bottom-container a {
     color: #00aaff;
 }
-body.theme-blue-neon .download-btn, body.theme-blue-neon .print-btn {
-    background: linear-gradient(90deg, #00aaff, #ff00aa);
-    color: #000000;
-    box-shadow: 0 4px 15px rgba(0, 170, 255, 0.4);
+body.theme-light .download-btn {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
 }
-body.theme-blue-neon .download-btn:hover, body.theme-blue-neon .print-btn:hover {
-    box-shadow: 0 6px 20px rgba(0, 170, 255, 0.6), 0 0 20px rgba(255, 0, 170, 0.8);
+body.theme-dark-neon .download-btn {
+    background: linear-gradient(90deg, #00ff00, #ff00ff);
+    /* color: white; */
+    /* box-shadow: 0 4px 15px rgba(225, 229, 230, 0.932); */
+}
+body.theme-light .download-btn:hover {
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.6), 0 0 20px rgba(0, 86, 179, 0.8);
+}
+body.theme-light .print-btn {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+}
+body.theme-dark-neon .print-btn {
+    background: linear-gradient(90deg, #00ff00, #ff00ff);
+    /* color: white; */
+    /* box-shadow: 0 4px 15px rgba(225, 229, 230, 0.932); */
+}
+body.theme-light .print-btn:hover {
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.6), 0 0 20px rgba(0, 86, 179, 0.8);
+}
+/* Theme-specific skills colors */
+body.theme-light .right-div li {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: white;
 }
 body.theme-blue-neon .right-div li {
     background: linear-gradient(90deg, #00aaff, #ff00aa);
     color: #000000;
+}
+
+body.theme-blue-neon .unlock-box {
+    background: linear-gradient(135deg, #ff00aa 0%, #00aaff 100%);
+    color: #000000;
+}
+
+body.theme-blue-neon .lock-icon {
+    color: #00aaff;
+}
+
+body.theme-blue-neon .unlock-box button {
+    background: #00aaff;
+    color: #000;
+}
+
+body.theme-blue-neon .unlock-box button:hover {
+    background: #0088cc;
+}
+
+body.theme-blue-neon .modal-content {
+    background: linear-gradient(135deg, #ff00aa 0%, #00aaff 100%);
+    color: #000000;
+}
+
+body.theme-blue-neon .modal-content button {
+    background: #00aaff;
+    color: #000;
+}
+
+body.theme-blue-neon .modal-content button:hover {
+    background: #0088cc;
+}
+
+body.theme-blue-neon .modal-content input:focus, body.theme-blue-neon .modal-content textarea:focus {
+    outline: 2px solid #00aaff;
+    box-shadow: 0 0 5px rgba(0, 170, 255, 0.5);
 }
 
 /* Theme Selector Styling */
