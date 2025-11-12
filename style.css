@@ -940,3 +940,7 @@ body.theme-blue-neon .theme-btn:hover {
 body.theme-blue-neon .theme-btn.active {
     box-shadow: 0 4px 20px rgba(0, 170, 255, 0.8), 0 0 25px rgba(255, 0, 170, 1);
 }
+
+.unlock-overlay button:first-of-type {
+  margin-bottom: 5px;
+}
